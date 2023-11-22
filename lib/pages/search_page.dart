@@ -13,6 +13,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   String? fromCity, toCity;
   DateTime? depatureDate;
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,7 @@ class _SearchPageState extends State<SearchPage> {
         title: Text("Search"),
       ),
       body: Form(
+        key: _formkey,
         child: Center(
           child: ListView(
             shrinkWrap: true,
@@ -84,7 +87,11 @@ class _SearchPageState extends State<SearchPage> {
                   ],
                 ),
               ),
-              ElevatedButton(onPressed: _search, child: Text("Search"))
+              Center(
+                  child: SizedBox(
+                      width: 150,
+                      child: ElevatedButton(
+                          onPressed: _search, child: Text("Search"))))
             ],
           ),
         ),
@@ -107,5 +114,12 @@ class _SearchPageState extends State<SearchPage> {
     ;
   }
 
-  void _search() {}
+  void _search() {
+    if (depatureDate == null) {
+      showMsg(context, emptyDateErrMessage);
+      return;
+    }
+
+    if (_formkey.currentState!.validate()) {}
+  }
 }
