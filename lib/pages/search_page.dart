@@ -116,7 +116,8 @@ class _SearchPageState extends State<SearchPage> {
 
   void _search() {
     if (depatureDate == null) {
-      showMsg(context, emptyDateErrMessage);
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Please select a departure date")));
       return;
     }
 
