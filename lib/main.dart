@@ -15,7 +15,7 @@ class busreservation extends StatelessWidget {
       title: "Bus Reservation",
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       home: const SearchPage(),
     );
